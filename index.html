@@ -9,7 +9,26 @@
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
-    <main></main>
+    <main>
+      <h1>Credit Card Validation</h1>
+      <div class="validation">
+        <label for="validation__input">Enter credit card number:</label>
+        <input
+          class="validation__input"
+          type="number"
+          name="validation__input"
+          id="validation__input"
+        />
+      </div>
+      <div class="result">
+        <p class="result__text">Correct/Incorrect</p>
+        <p class="result__alert-info">Number must be without spaces</p>
+      </div>
+      <div class="card">
+        <img src="src/img/Mastercard-Logo-PNG10.png" alt="mastercard logo" />
+        <p class="card__number">93939383992</p>
+      </div>
+    </main>
     <script src="script.js" type="module"></script>
   </body>
 </html>
