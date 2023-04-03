@@ -19,8 +19,8 @@ html {
   box-sizing: border-box;
   font-size: 62.5%;
   font-family: sans-serif;
-  background-color: #f1fffa;
-  color: #0a0f0d;
+  background-color: #0a0f0d;
+  color: #f1fffa;
 }
 
 main {
@@ -44,8 +44,6 @@ main {
   width: 80%;
   height: 50%;
   padding: 4rem;
-  border-radius: 2rem;
-  background-color: #e4f4fc;
 }
 
 .validation {
@@ -68,6 +66,9 @@ main {
   text-align: center;
   font-size: 3.6rem;
   border-radius: 0.6rem;
+}
+.validation__type--input:focus {
+  outline: none;
 }
 .validation__result {
   font-size: 2rem;
@@ -110,6 +111,8 @@ main {
   display: flex;
   margin: auto;
   border: 1px solid #0a0f0d;
+  background-color: #f1fffa;
+  color: #0a0f0d;
   border-radius: 1rem;
   width: 36rem;
   height: 18rem;

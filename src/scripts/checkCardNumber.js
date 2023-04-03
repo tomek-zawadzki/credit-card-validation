@@ -20,7 +20,7 @@ const americanExpType = {
   name: "American Express",
   length: 15,
   firstNums: [34, 37],
-  img: "src/img/American_Express_(10).png",
+  img: "src/img/american_express_logo.png",
 };
 
 const checkCardNumber = (cardNumber) => {
