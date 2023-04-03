@@ -11,6 +11,41 @@ const americanExpressType = {
   firstNums: [34, 37],
 };
 
+const veryficationAlgorithm = (cardNumber) => {
+  const reverseCardNumber = cardNumber.toString().split("").reverse();
+
+  const evenIndexNumbers = [];
+  const oddIndexNumbers = [];
+
+  reverseCardNumber.forEach((num, i) => {
+    i % 2 ? oddIndexNumbers.push(num * 2) : evenIndexNumbers.push(num);
+  });
+
+  const preparedOddIndexNums = oddIndexNumbers.map((num) => {
+    if (num > 9) {
+      const newValues = num
+        .toString()
+        .split("")
+        .reduce((prevNum, nextNum) => parseInt(prevNum) + parseInt(nextNum));
+      return newValues;
+    } else {
+      return num;
+    }
+  });
+
+  const summedAllValues =
+    evenIndexNumbers.reduce(
+      (prevNum, nextNum) => parseInt(prevNum) + parseInt(nextNum)
+    ) +
+    preparedOddIndexNums.reduce(
+      (prevNum, nextNum) => parseInt(prevNum) + parseInt(nextNum)
+    );
+
+  const result = summedAllValues % 10 === 0;
+
+  return result;
+};
+
 const checkCardNumber = (cardNumber) => {
   const cardNumLength = cardNumber.toString().length;
   const firstCreditCardNums = cardNumber
@@ -18,9 +53,6 @@ const checkCardNumber = (cardNumber) => {
     .split("")
     .splice(0, 2)
     .join("");
-
-  cardNumLength;
-  firstCreditCardNums;
 
   const checkIfMastercard =
     mastercardType.firstNums.includes(parseInt(firstCreditCardNums)) &&
@@ -34,11 +66,11 @@ const checkCardNumber = (cardNumber) => {
     americanExpressType.firstNums.includes(parseInt(firstCreditCardNums)) &&
     cardNumLength === americanExpressType.length;
 
-  if (checkIfMastercard) {
+  if (checkIfMastercard && veryficationAlgorithm(cardNumber)) {
     console.log("mastercard");
-  } else if (checkIfVisa) {
+  } else if (checkIfVisa && veryficationAlgorithm(cardNumber)) {
     console.log("visa");
-  } else if (checkIfAmericanEx) {
+  } else if (checkIfAmericanEx && veryficationAlgorithm(cardNumber)) {
     console.log("american express");
   }
 
@@ -46,5 +78,3 @@ const checkCardNumber = (cardNumber) => {
 };
 
 export default checkCardNumber;
-
-console.log(checkCardNumber(2223016768739313));
