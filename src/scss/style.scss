@@ -93,13 +93,18 @@ main {
 }
 
 .card {
-  display: none;
-  position: relative;
-  margin: auto;
-  border: 1px solid #0a0f0d;
-  border-radius: 1rem;
-  width: 36rem;
-  height: 18rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  &__box {
+    position: relative;
+    display: flex;
+    margin: auto;
+    border: 1px solid #0a0f0d;
+    border-radius: 1rem;
+    width: 36rem;
+    height: 18rem;
+  }
   &__logo {
     position: absolute;
     width: 10rem;

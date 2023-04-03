@@ -1,49 +1,20 @@
+import luhnAlgorithm from "./luhnAlgorithm.js";
+import createCreditCard from "./createCreditCard.js";
+
 const visaType = {
+  name: "Visa",
   length: [13, 16],
   firstNums: 4,
 };
 const mastercardType = {
+  name: "Mastercard",
   length: 16,
   firstNums: [22, 51, 52, 53, 54, 55],
 };
 const americanExpressType = {
+  name: "American Express",
   length: 15,
   firstNums: [34, 37],
-};
-
-const veryficationAlgorithm = (cardNumber) => {
-  const reverseCardNumber = cardNumber.toString().split("").reverse();
-
-  const evenIndexNumbers = [];
-  const oddIndexNumbers = [];
-
-  reverseCardNumber.forEach((num, i) => {
-    i % 2 ? oddIndexNumbers.push(num * 2) : evenIndexNumbers.push(num);
-  });
-
-  const preparedOddIndexNums = oddIndexNumbers.map((num) => {
-    if (num > 9) {
-      const newValues = num
-        .toString()
-        .split("")
-        .reduce((prevNum, nextNum) => parseInt(prevNum) + parseInt(nextNum));
-      return newValues;
-    } else {
-      return num;
-    }
-  });
-
-  const summedAllValues =
-    evenIndexNumbers.reduce(
-      (prevNum, nextNum) => parseInt(prevNum) + parseInt(nextNum)
-    ) +
-    preparedOddIndexNums.reduce(
-      (prevNum, nextNum) => parseInt(prevNum) + parseInt(nextNum)
-    );
-
-  const result = summedAllValues % 10 === 0;
-
-  return result;
 };
 
 const checkCardNumber = (cardNumber) => {
@@ -66,15 +37,27 @@ const checkCardNumber = (cardNumber) => {
     americanExpressType.firstNums.includes(parseInt(firstCreditCardNums)) &&
     cardNumLength === americanExpressType.length;
 
-  if (checkIfMastercard && veryficationAlgorithm(cardNumber)) {
-    console.log("mastercard");
-  } else if (checkIfVisa && veryficationAlgorithm(cardNumber)) {
-    console.log("visa");
-  } else if (checkIfAmericanEx && veryficationAlgorithm(cardNumber)) {
-    console.log("american express");
-  }
+  if (checkIfMastercard && luhnAlgorithm(cardNumber)) {
+    createCreditCard(
+      "src/img/Mastercard-Logo-PNG10.png",
+      cardNumber,
+      mastercardType.name
+    );
+    return;
+  } else if (checkIfVisa && luhnAlgorithm(cardNumber)) {
+    createCreditCard("src/img/Visa-Logo-PNG5.png", cardNumber, visaType.name);
+    return;
+  } else if (checkIfAmericanEx && luhnAlgorithm(cardNumber)) {
+    createCreditCard(
+      "src/img/American_Express_(10).png",
+      cardNumber,
+      americanExpressType.name
+    );
 
-  return cardNumber;
+    return;
+  } else {
+    return false;
+  }
 };
 
 export default checkCardNumber;

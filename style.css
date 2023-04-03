@@ -93,8 +93,13 @@ main {
 }
 
 .card {
-  display: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.card__box {
   position: relative;
+  display: flex;
   margin: auto;
   border: 1px solid #0a0f0d;
   border-radius: 1rem;
