@@ -12,6 +12,106 @@
 html {
   box-sizing: border-box;
   font-size: 62.5%;
+  font-family: sans-serif;
+  background-color: #f1fffa;
+  color: #0a0f0d;
+}
+
+main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 100vh;
+  width: 100%;
+}
+
+.title {
+  font-size: 5.2rem;
+  text-align: center;
+  margin: 10rem;
+}
+
+.container {
+  display: grid;
+  grid-template-columns: 3fr 2fr;
+  gap: 2rem;
+  width: 80%;
+  height: 50%;
+  padding: 4rem;
+  border-radius: 2rem;
+  background-color: #e4f4fc;
+}
+
+.validation {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  font-size: 2.6rem;
+}
+.validation__type {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.6rem;
+}
+.validation__type--input {
+  height: 3rem;
+  width: 40rem;
+  text-align: center;
+  font-size: 2.2rem;
+  border-radius: 0.6rem;
+}
+.validation__result {
+  font-size: 2rem;
+}
+.validation__result--text {
+  display: none;
+  margin-top: 3rem;
+  font-size: 4rem;
+  color: red;
+}
+.validation__result--alert-info {
+  display: none;
+  margin-top: 3rem;
+}
+.validation__btn {
+  background-color: tomato;
+  border: none;
+  border-radius: 0.6rem;
+  color: #f1fffa;
+  width: 10rem;
+  height: 3.6rem;
+  font-size: 2.2rem;
+  transition: background-color 0.3s;
+}
+.validation__btn:hover {
+  background-color: rgb(225, 78, 52);
+}
+.validation__btn:active {
+  background-color: rgb(217, 172, 164);
+}
+
+.card {
+  display: none;
+  position: relative;
+  margin: auto;
+  border: 1px solid #0a0f0d;
+  border-radius: 1rem;
+  width: 36rem;
+  height: 18rem;
+}
+.card__logo {
+  position: absolute;
+  width: 10rem;
+  top: 1rem;
+  left: 1rem;
+}
+.card__number {
+  position: absolute;
+  left: 2rem;
+  bottom: 2rem;
+  font-size: 3rem;
 }
 
 /*# sourceMappingURL=style.css.map */

@@ -10,23 +10,36 @@
   </head>
   <body>
     <main>
-      <h1>Credit Card Validation</h1>
-      <div class="validation">
-        <label for="validation__input">Enter credit card number:</label>
-        <input
-          class="validation__input"
-          type="number"
-          name="validation__input"
-          id="validation__input"
-        />
-      </div>
-      <div class="result">
-        <p class="result__text">Correct/Incorrect</p>
-        <p class="result__alert-info">Number must be without spaces</p>
-      </div>
-      <div class="card">
-        <img src="src/img/Mastercard-Logo-PNG10.png" alt="mastercard logo" />
-        <p class="card__number">93939383992</p>
+      <h1 class="title">Credit Card Validation</h1>
+      <div class="container">
+        <div class="validation">
+          <div class="validation__type">
+            <label class="validation__type--label" for="validation__type--input"
+              >Enter credit card number:</label
+            >
+            <input
+              class="validation__type--input"
+              type="number"
+              name="validation__type--input"
+              id="validation__type--input"
+            />
+            <button class="validation__btn">Check</button>
+          </div>
+          <div class="validation__result">
+            <p class="validation__result--text">Correct</p>
+            <p class="validation__result--alert-info">
+              Number must be without spaces
+            </p>
+          </div>
+        </div>
+        <div class="card">
+          <img
+            class="card__logo"
+            src="src/img/Mastercard-Logo-PNG10.png"
+            alt="mastercard logo"
+          />
+          <p class="card__number">2221000000000009</p>
+        </div>
       </div>
     </main>
     <script src="script.js" type="module"></script>
