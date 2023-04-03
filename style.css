@@ -109,7 +109,7 @@ main {
 .card__box {
   position: relative;
   display: flex;
-  margin: auto;
+  margin-bottom: 4rem;
   border: 1px solid #0a0f0d;
   background-color: #f1fffa;
   color: #0a0f0d;

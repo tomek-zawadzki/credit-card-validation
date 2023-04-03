@@ -44,8 +44,6 @@ main {
   width: 80%;
   height: 50%;
   padding: 4rem;
-  // border-radius: 2rem;
-  // background-color: #e4f4fc;
 }
 
 .validation {
@@ -110,7 +108,7 @@ main {
   &__box {
     position: relative;
     display: flex;
-    margin: auto;
+    margin-bottom: 4rem;
     border: 1px solid #0a0f0d;
     background-color: #f1fffa;
     color: #0a0f0d;
