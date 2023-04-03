@@ -1,4 +1,8 @@
-import { creditCardElement } from "./variables.js";
+import {
+  creditCardElement,
+  creditCardInfo,
+  validationResult,
+} from "./variables.js";
 
 const createCreditCard = (src, cardNumber, cardName) => {
   const html = `
@@ -13,6 +17,14 @@ const createCreditCard = (src, cardNumber, cardName) => {
 `;
 
   creditCardElement.insertAdjacentHTML("afterbegin", html);
+};
+
+export const showCardType = (creditCardType) => {
+  validationResult.style.visibility = "visible";
+  validationResult.style.color = "green";
+  validationResult.innerHTML = "Correct credit card number";
+  creditCardInfo.style.display = "block";
+  creditCardInfo.innerHTML = creditCardType.name;
 };
 
 export default createCreditCard;

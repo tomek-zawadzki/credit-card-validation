@@ -9,6 +9,12 @@
   box-sizing: inherit;
 }
 
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
 html {
   box-sizing: border-box;
   font-size: 62.5%;
@@ -48,6 +54,7 @@ main {
   justify-content: center;
   align-items: center;
   font-size: 2.6rem;
+  position: relative;
 }
 .validation__type {
   display: flex;
@@ -56,20 +63,20 @@ main {
   gap: 1.6rem;
 }
 .validation__type--input {
-  height: 3rem;
-  width: 40rem;
+  height: 8rem;
+  width: 50rem;
   text-align: center;
-  font-size: 2.2rem;
+  font-size: 3.6rem;
   border-radius: 0.6rem;
 }
 .validation__result {
   font-size: 2rem;
 }
 .validation__result--text {
-  display: none;
+  visibility: hidden;
   margin-top: 3rem;
   font-size: 4rem;
-  color: red;
+  color: green;
 }
 .validation__result--alert-info {
   display: none;
@@ -94,6 +101,7 @@ main {
 
 .card {
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
 }
@@ -109,13 +117,17 @@ main {
 .card__logo {
   position: absolute;
   width: 10rem;
-  top: 1rem;
-  left: 1rem;
+  top: 2rem;
+  left: 2rem;
 }
 .card__number {
   position: absolute;
   left: 2rem;
   bottom: 2rem;
+  font-size: 3rem;
+}
+.card__info {
+  display: none;
   font-size: 3rem;
 }
 

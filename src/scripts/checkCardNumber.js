@@ -1,5 +1,8 @@
 import luhnAlgorithm from "./luhnAlgorithm.js";
 import createCreditCard from "./createCreditCard.js";
+import { showCardType } from "./createCreditCard.js";
+import falseMessage from "./falseMessage.js";
+import resetCard from "./resetCard.js";
 
 const visaType = {
   name: "Visa",
@@ -18,6 +21,14 @@ const americanExpressType = {
 };
 
 const checkCardNumber = (cardNumber) => {
+  resetCard();
+
+  //   if (/[0-9]/gm.test(cardNumber)) {
+  //     return cardNumber;
+  //   } else {
+  //     return falseMessage();
+  //   }
+
   const cardNumLength = cardNumber.toString().length;
   const firstCreditCardNums = cardNumber
     .toString()
@@ -25,17 +36,22 @@ const checkCardNumber = (cardNumber) => {
     .splice(0, 2)
     .join("");
 
+  const checkCardNumber = /[0-9]/gm.test(cardNumber);
+
   const checkIfMastercard =
     mastercardType.firstNums.includes(parseInt(firstCreditCardNums)) &&
-    cardNumLength === mastercardType.length;
+    cardNumLength === mastercardType.length &&
+    checkCardNumber;
 
   const checkIfVisa =
     visaType.firstNums == firstCreditCardNums.split("").slice(0, 1).join() &&
-    visaType.length.includes(cardNumLength);
+    visaType.length.includes(cardNumLength) &&
+    checkCardNumber;
 
   const checkIfAmericanEx =
     americanExpressType.firstNums.includes(parseInt(firstCreditCardNums)) &&
-    cardNumLength === americanExpressType.length;
+    cardNumLength === americanExpressType.length &&
+    checkCardNumber;
 
   if (checkIfMastercard && luhnAlgorithm(cardNumber)) {
     createCreditCard(
@@ -43,20 +59,19 @@ const checkCardNumber = (cardNumber) => {
       cardNumber,
       mastercardType.name
     );
-    return;
+    return showCardType(mastercardType);
   } else if (checkIfVisa && luhnAlgorithm(cardNumber)) {
     createCreditCard("src/img/Visa-Logo-PNG5.png", cardNumber, visaType.name);
-    return;
+    return showCardType(visaType);
   } else if (checkIfAmericanEx && luhnAlgorithm(cardNumber)) {
     createCreditCard(
       "src/img/American_Express_(10).png",
       cardNumber,
       americanExpressType.name
     );
-
-    return;
+    return showCardType(americanExpressType);
   } else {
-    return false;
+    return falseMessage();
   }
 };
 

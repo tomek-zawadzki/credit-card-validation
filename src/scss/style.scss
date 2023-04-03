@@ -9,6 +9,12 @@
   box-sizing: inherit;
 }
 
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
 html {
   box-sizing: border-box;
   font-size: 62.5%;
@@ -48,26 +54,27 @@ main {
   justify-content: center;
   align-items: center;
   font-size: 2.6rem;
+  position: relative;
   &__type {
     display: flex;
     flex-direction: column;
     align-items: center;
     gap: 1.6rem;
     &--input {
-      height: 3rem;
-      width: 40rem;
+      height: 8rem;
+      width: 50rem;
       text-align: center;
-      font-size: 2.2rem;
+      font-size: 3.6rem;
       border-radius: 0.6rem;
     }
   }
   &__result {
     font-size: 2rem;
     &--text {
-      display: none;
+      visibility: hidden;
       margin-top: 3rem;
       font-size: 4rem;
-      color: red;
+      color: green;
     }
     &--alert-info {
       display: none;
@@ -94,6 +101,7 @@ main {
 
 .card {
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
   &__box {
@@ -108,13 +116,17 @@ main {
   &__logo {
     position: absolute;
     width: 10rem;
-    top: 1rem;
-    left: 1rem;
+    top: 2rem;
+    left: 2rem;
   }
   &__number {
     position: absolute;
     left: 2rem;
     bottom: 2rem;
+    font-size: 3rem;
+  }
+  &__info {
+    display: none;
     font-size: 3rem;
   }
 }
