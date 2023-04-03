@@ -8,26 +8,23 @@ const visaType = {
   name: "Visa",
   length: [13, 16],
   firstNums: 4,
+  img: "src/img/Visa-Logo-PNG5.png",
 };
 const mastercardType = {
   name: "Mastercard",
   length: 16,
   firstNums: [22, 51, 52, 53, 54, 55],
+  img: "src/img/Mastercard-Logo-PNG10.png",
 };
-const americanExpressType = {
+const americanExpType = {
   name: "American Express",
   length: 15,
   firstNums: [34, 37],
+  img: "src/img/American_Express_(10).png",
 };
 
 const checkCardNumber = (cardNumber) => {
   resetCard();
-
-  //   if (/[0-9]/gm.test(cardNumber)) {
-  //     return cardNumber;
-  //   } else {
-  //     return falseMessage();
-  //   }
 
   const cardNumLength = cardNumber.toString().length;
   const firstCreditCardNums = cardNumber
@@ -48,28 +45,20 @@ const checkCardNumber = (cardNumber) => {
     visaType.length.includes(cardNumLength) &&
     checkCardNumber;
 
-  const checkIfAmericanEx =
-    americanExpressType.firstNums.includes(parseInt(firstCreditCardNums)) &&
-    cardNumLength === americanExpressType.length &&
+  const checkIfAmericanExp =
+    americanExpType.firstNums.includes(parseInt(firstCreditCardNums)) &&
+    cardNumLength === americanExpType.length &&
     checkCardNumber;
 
   if (checkIfMastercard && luhnAlgorithm(cardNumber)) {
-    createCreditCard(
-      "src/img/Mastercard-Logo-PNG10.png",
-      cardNumber,
-      mastercardType.name
-    );
+    createCreditCard(mastercardType.img, cardNumber, mastercardType.name);
     return showCardType(mastercardType);
   } else if (checkIfVisa && luhnAlgorithm(cardNumber)) {
-    createCreditCard("src/img/Visa-Logo-PNG5.png", cardNumber, visaType.name);
+    createCreditCard(visaType.img, cardNumber, visaType.name);
     return showCardType(visaType);
-  } else if (checkIfAmericanEx && luhnAlgorithm(cardNumber)) {
-    createCreditCard(
-      "src/img/American_Express_(10).png",
-      cardNumber,
-      americanExpressType.name
-    );
-    return showCardType(americanExpressType);
+  } else if (checkIfAmericanExp && luhnAlgorithm(cardNumber)) {
+    createCreditCard(americanExpType.img, cardNumber, americanExpType.name);
+    return showCardType(americanExpType);
   } else {
     return falseMessage();
   }
